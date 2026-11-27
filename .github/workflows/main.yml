@@ -13,6 +13,9 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Remove author's Mac-only Java path
+        run: sed -i '/^org.gradle.java.home=/d' gradle.properties
+
       - name: Accept Android SDK licenses
         run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
 
